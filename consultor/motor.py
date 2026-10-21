@@ -307,6 +307,39 @@ class ConsultorCarreiras(KnowledgeEngine):
             "e clientes: seu perfil de interação reforça essa trilha.",
         )
 
+    # ===================== QA ============================================
+    @Rule(Resposta(atuacao="testes", entrega="qualidade"))
+    def r22_qa_testes_e_qualidade(self):
+        self._pontuar(
+            "R22", "qa", 8,
+            "Testar software e entregar confiabilidade/qualidade é o núcleo de QA.",
+        )
+
+    @Rule(Resposta(atuacao="testes", ferramenta=uma_de("python", "javascript")))
+    def r23_qa_automacao_de_testes(self):
+        self._pontuar(
+            "R23", "qa", 4,
+            "Testar com Python/JavaScript permite escrever testes automatizados, "
+            "diferencial do Engenheiro de Qualidade.",
+        )
+
+    # ===================== PRODUTO =======================================
+    @Rule(Resposta(atuacao="negocio", social="alto"))
+    def r24_pm_negocio_e_pessoas(self):
+        self._pontuar(
+            "R24", "produto", 8,
+            "Decidir o que construir conversando com clientes e times é a ponte "
+            "negócio-design-desenvolvimento da Gestão de Produtos.",
+        )
+
+    @Rule(Resposta(entrega="valor_negocio", social=uma_de("medio", "alto")))
+    def r25_pm_valor_de_negocio(self):
+        self._pontuar(
+            "R25", "produto", 5,
+            "Priorizar o resultado para o negócio, interagindo com pessoas, é típico de "
+            "Product Management.",
+        )
+
     # ===================== DECISÃO =======================================
     # salience negativa = roda DEPOIS de todas as regras de domínio (salience 0).
     @Rule(Resposta(), salience=-100)
