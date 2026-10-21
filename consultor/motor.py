@@ -88,6 +88,83 @@ class ConsultorCarreiras(KnowledgeEngine):
         self.pontuacao[trilha] += pontos
         self.disparos.append(Disparo(regra, trilha, pontos, motivo))
 
+    # ===================== BACK-END ======================================
+    @Rule(
+        Resposta(
+            atuacao="algoritmos",
+            ferramenta=uma_de("python", "sql", "javascript", "mobile_lang"),
+            foco_dados="nenhum",
+            plataforma=uma_de("web", "indiferente"),
+        )
+    )
+    def r01_backend_algoritmos_linguagem(self):
+        self._pontuar(
+            "R01", "backend", 6,
+            "Você gosta de escrever algoritmos e regras lógicas, já programa (Python, SQL, "
+            "JavaScript/Node, Java...) e não quer focar em dados analíticos nem em celular: "
+            "é o núcleo do Back-end (APIs, regras de negócio, bancos).",
+        )
+
+    @Rule(
+        Resposta(
+            atuacao="algoritmos",
+            entrega=uma_de("produto_final", "infraestrutura"),
+            foco_dados="nenhum",
+            plataforma=uma_de("web", "indiferente"),
+        )
+    )
+    def r02_backend_logica_para_sustentar_sistemas(self):
+        self._pontuar(
+            "R02", "backend", 4,
+            "Programação lógica voltada a entregar ou sustentar sistemas (e não a modelar "
+            "dados) combina com o Back-end.",
+        )
+
+    # ===================== FRONT-END =====================================
+    @Rule(Resposta(atuacao="layouts", ferramenta="javascript"))
+    def r03_frontend_layouts_javascript(self):
+        self._pontuar(
+            "R03", "frontend", 7,
+            "Criar layouts visuais com JavaScript é a essência do Front-end.",
+        )
+
+    @Rule(Resposta(atuacao="layouts", entrega="produto_final", plataforma="web"))
+    def r04_frontend_layouts_produto_web(self):
+        self._pontuar(
+            "R04", "frontend", 5,
+            "Você quer entregar o produto final que o usuário vê, em interfaces web.",
+        )
+
+    @Rule(Resposta(atuacao="layouts", plataforma="celular"))
+    def r05_frontend_penalidade_preferencia_celular(self):
+        self._pontuar(
+            "R05", "frontend", -2,
+            "Preferir celular em vez de web reduz a aderência ao Front-end web "
+            "(regra de desambiguação Front-end x Mobile).",
+        )
+
+    # ===================== MOBILE ========================================
+    @Rule(Resposta(plataforma="celular", atuacao=uma_de("layouts", "algoritmos")))
+    def r06_mobile_celular_construir(self):
+        self._pontuar(
+            "R06", "mobile", 5,
+            "Você quer construir (interfaces ou lógica) para aplicativos de celular.",
+        )
+
+    @Rule(
+        Resposta(
+            plataforma="celular",
+            ferramenta=uma_de("mobile_lang", "javascript"),
+            entrega="produto_final",
+        )
+    )
+    def r07_mobile_ferramenta_e_produto(self):
+        self._pontuar(
+            "R07", "mobile", 5,
+            "Sua ferramenta (Kotlin/Swift/Dart/Java ou JavaScript) e o desejo de entregar o "
+            "produto final no celular apontam para Mobile (nativo ou Flutter/React Native).",
+        )
+
     # ===================== DECISÃO =======================================
     # salience negativa = roda DEPOIS de todas as regras de domínio (salience 0).
     @Rule(Resposta(), salience=-100)
