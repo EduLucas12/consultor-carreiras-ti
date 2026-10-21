@@ -1,0 +1,9 @@
+# ATENÇÃO: o Experta fixa frozendict==1.2, que NÃO compila em Python 3.12+.
+# Por isso o jeito mais confiável de instalar é em duas etapas (ver README):
+#   pip install -r requirements.txt
+#   pip install --no-deps experta
+streamlit>=1.35
+pandas
+frozendict
+schema
+pytest
