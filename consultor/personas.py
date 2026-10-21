@@ -99,6 +99,13 @@ PERSONAS: tuple[Persona, ...] = (
              foco_dados="nenhum", foco_infra="nenhum", plataforma="indiferente", social="medio"),
         "qa",
     ),
+    Persona(
+        "Natália, a arquiteta que fala com o cliente",
+        "Prefere desenhar a infraestrutura na nuvem a programar telas; gosta de explicar custos e escalabilidade para clientes.",
+        dict(matematica="baixa", atuacao="servidores", ferramenta="python", entrega="infraestrutura",
+             foco_dados="nenhum", foco_infra="nuvem", plataforma="indiferente", social="alto"),
+        "cloud",
+    ),
 )
 
 # Perfil sem sinais claros: o sistema deve admitir que não sabe (inconclusivo).
