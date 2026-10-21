@@ -165,6 +165,70 @@ class ConsultorCarreiras(KnowledgeEngine):
             "produto final no celular apontam para Mobile (nativo ou Flutter/React Native).",
         )
 
+    # ===================== CIÊNCIA DE DADOS ==============================
+    @Rule(Resposta(matematica="alta", atuacao="dados_brutos", foco_dados="modelos"))
+    def r08_ds_matematica_dados_modelos(self):
+        self._pontuar(
+            "R08", "ciencia_dados", 8,
+            "Matemática alta + análise de dados brutos + interesse em criar modelos e previsões "
+            "é o perfil central de Ciência de Dados e Machine Learning.",
+        )
+
+    @Rule(
+        Resposta(entrega="insights", foco_dados="modelos", ferramenta=uma_de("python", "sql"))
+    )
+    def r09_ds_insights_modelos_python(self):
+        self._pontuar(
+            "R09", "ciencia_dados", 5,
+            "Entregar previsões e informações para decisão, modelando dados com Python/SQL, "
+            "é típico de Ciência de Dados.",
+        )
+
+    @Rule(Resposta(matematica="baixa", foco_dados="modelos"))
+    def r10_ds_penalidade_pouca_matematica(self):
+        self._pontuar(
+            "R10", "ciencia_dados", -4,
+            "Modelagem preditiva exige estatística: afinidade baixa com matemática reduz a "
+            "aderência a Ciência de Dados.",
+        )
+
+    # ===================== ENGENHARIA DE DADOS ===========================
+    @Rule(
+        Resposta(
+            atuacao="dados_brutos",
+            foco_dados="pipelines",
+            ferramenta=uma_de("python", "sql"),
+        )
+    )
+    def r11_de_dados_brutos_pipelines(self):
+        self._pontuar(
+            "R11", "engenharia_dados", 8,
+            "Lidar com dados brutos, construindo pipelines com Python/SQL, é o centro da "
+            "Engenharia de Dados (ETL/ELT).",
+        )
+
+    @Rule(Resposta(foco_dados="pipelines", entrega="infraestrutura"))
+    def r12_de_pipelines_infraestrutura(self):
+        self._pontuar(
+            "R12", "engenharia_dados", 5,
+            "Você quer sustentar a infraestrutura por onde os dados trafegam (data lakes, "
+            "pipelines).",
+        )
+
+    @Rule(
+        Resposta(
+            matematica=uma_de("baixa", "media"),
+            atuacao="dados_brutos",
+            foco_dados="pipelines",
+        )
+    )
+    def r13_de_menos_estatistica_que_ds(self):
+        self._pontuar(
+            "R13", "engenharia_dados", 2,
+            "Trabalhar com dados focando em arquitetura (e não em estatística avançada) "
+            "diferencia o Engenheiro do Cientista de Dados.",
+        )
+
     # ===================== DECISÃO =======================================
     # salience negativa = roda DEPOIS de todas as regras de domínio (salience 0).
     @Rule(Resposta(), salience=-100)
