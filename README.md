@@ -5,7 +5,7 @@ que entrevista o usuário e recomenda **uma entre 10 trilhas de carreira em TI**
 com as regras que dispararam.
 
 **Disciplina:** Inteligência Artificial · **Curso:** Ciência da Computação · **UNIPAC Barbacena**
-**Professor:** Felipe Roncalli de Paula Carneiro · **Aluno(a):** _(seu nome aqui)_
+**Professor:** Felipe Roncalli de Paula Carneiro · **Aluno(a):** Lucas Eduardo Silva
 
 ## As 10 trilhas
 
@@ -50,7 +50,7 @@ Na barra lateral há o **modo demonstração**: carregue uma persona de teste e 
 pytest -q
 ```
 
-São 31 testes: 10 personas (uma por trilha, incluindo as 4 exigidas), pares confundíveis
+São 32 testes: 11 personas (cobrindo as 10 trilhas, incluindo as 4 exigidas), pares confundíveis
 (Ciência × Engenharia de Dados, DevOps × Cloud, Front-end × Mobile), regras mortas, consistência
 da documentação e a própria interface (via `streamlit.testing.v1.AppTest`).
 
