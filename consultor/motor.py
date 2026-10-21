@@ -229,6 +229,84 @@ class ConsultorCarreiras(KnowledgeEngine):
             "diferencia o Engenheiro do Cientista de Dados.",
         )
 
+    # ===================== CIBERSEGURANÇA ================================
+    @Rule(Resposta(atuacao="seguranca", entrega="seguranca"))
+    def r14_sec_atuacao_e_entrega(self):
+        self._pontuar(
+            "R14", "ciberseguranca", 8,
+            "Você quer trabalhar com segurança e entregar proteção contra invasões: "
+            "perfil direto de Cibersegurança.",
+        )
+
+    @Rule(Resposta(atuacao="seguranca", ferramenta="linux_redes"))
+    def r15_sec_linux_redes(self):
+        self._pontuar(
+            "R15", "ciberseguranca", 5,
+            "Segurança + domínio de Linux/Redes é a base para análise de vulnerabilidades "
+            "e redes seguras.",
+        )
+
+    # ===================== DEVOPS & SRE ==================================
+    @Rule(Resposta(atuacao="automacao", foco_infra="ci_cd"))
+    def r16_devops_automacao_cicd(self):
+        self._pontuar(
+            "R16", "devops", 8,
+            "Automatizar processos de entrega com CI/CD e contêineres é a definição de DevOps.",
+        )
+
+    @Rule(
+        Resposta(
+            ferramenta="linux_redes",
+            foco_infra="ci_cd",
+            entrega="infraestrutura",
+        )
+    )
+    def r17_devops_linux_cicd_infra(self):
+        self._pontuar(
+            "R17", "devops", 5,
+            "Linux/Redes, interesse em CI/CD e foco em sustentar a infraestrutura combinam "
+            "com DevOps/SRE.",
+        )
+
+    @Rule(Resposta(atuacao="servidores", foco_infra="ci_cd"))
+    def r18_devops_servidores_cicd(self):
+        self._pontuar(
+            "R18", "devops", 3,
+            "Cuidar de servidores com mentalidade de automação (CI/CD) aponta para DevOps "
+            "(e não para arquitetura em nuvem).",
+        )
+
+    # ===================== CLOUD =========================================
+    @Rule(Resposta(foco_infra="nuvem", entrega="infraestrutura"))
+    def r19_cloud_nuvem_infra(self):
+        self._pontuar(
+            "R19", "cloud", 7,
+            "Interesse em projetar infraestrutura em provedores de nuvem e entregar a base "
+            "que sustenta os sistemas: Cloud Architecture.",
+        )
+
+    @Rule(Resposta(atuacao="servidores", foco_infra="nuvem"))
+    def r20_cloud_servidores_nuvem(self):
+        self._pontuar(
+            "R20", "cloud", 5,
+            "Gerir servidores e ambientes, migrando/escalando na nuvem, é trabalho de "
+            "Computação em Nuvem.",
+        )
+
+    @Rule(
+        Resposta(
+            atuacao=uma_de("servidores", "automacao"),
+            foco_infra="nuvem",
+            social=uma_de("medio", "alto"),
+        )
+    )
+    def r21_cloud_dialoga_com_times(self):
+        self._pontuar(
+            "R21", "cloud", 3,
+            "Arquitetos de nuvem planejam e negociam soluções (custo, escala) com times "
+            "e clientes: seu perfil de interação reforça essa trilha.",
+        )
+
     # ===================== DECISÃO =======================================
     # salience negativa = roda DEPOIS de todas as regras de domínio (salience 0).
     @Rule(Resposta(), salience=-100)
