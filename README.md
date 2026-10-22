@@ -104,6 +104,13 @@ git remote add origin https://github.com/<seu-usuario>/<seu-repo>.git
 git push -u origin main
 ```
 
+## Sobre o histórico de commits
+
+O histórico deste repositório foi organizado em commits temáticos a partir de uma versão do projeto
+já desenvolvida, e por isso todos os commits têm a mesma data (21/10/2026). As datas **não**
+representam o ritmo real de desenvolvimento; os commits servem para separar, por assunto, as etapas
+do trabalho (engenharia de conhecimento, motor, regras, testes e interface).
+
 ## Limitações (honestas)
 
 - Os **pesos** das regras são julgamento do autor, não dados empíricos: refletem o conhecimento de
